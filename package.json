@@ -10,7 +10,7 @@
     "build": "./node_modules/.bin/webpack",
     "start": "npm run build && DEV=1 node $NODE_DEBUG_OPTION server.js",
     "serve": "npm run build && node server.js",
-    "heroku-postbuild": "webpack -p --config ./webpack.prod.config.js --progress"
+    "heroku-postbuild": "webpack -p --config ./webpack.config.js --progress"
   },
   "author": "Keyvan Mir Mohammad Sadeghi <keyvan.m.sadeghi@gmail.com>",
   "license": "MIT",
