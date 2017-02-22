@@ -44,6 +44,5 @@
   },
   "dependencies": {
     "koa-neo4j": "^1.0.0",
-    "webpack": "^2.15.11"
   }
 }
