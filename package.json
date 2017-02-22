@@ -8,7 +8,6 @@
     "lint": "./node_modules/.bin/eslint ./src --fix",
     "dev": "./node_modules/.bin/webpack --progress --colors --watch",
     "build": "./node_modules/.bin/webpack",
-    "//""start": "npm run build && DEV=1 node $NODE_DEBUG_OPTION server.js",
     "start": "npm run build && node server.js",
     "serve": "npm run build && node server.js"
   },
