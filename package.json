@@ -8,7 +8,7 @@
     "lint": "./node_modules/.bin/eslint ./src --fix",
     "dev": "./node_modules/.bin/webpack --progress --colors --watch",
     "build": "./node_modules/.bin/webpack",
-    "start": "npm run build && node server.js",
+    "start": "npm run build && DEV=1 node $NODE_DEBUG_OPTION server.js",
     "serve": "npm run build && node server.js"
   },
   "author": "Keyvan Mir Mohammad Sadeghi <keyvan.m.sadeghi@gmail.com>",
@@ -40,10 +40,9 @@
     "eslint": "^3.3.1",
     "eslint-loader": "^1.5.0",
     "eslint-plugin-babel": "^3.3.0",
-    "webpack": "^2.15.11"
+    "webpack": "^2.1.0-beta.27"
   },
   "dependencies": {
-  "koa-neo4j": "^1.0.0",
-  "webpack": "2.x"
+    "koa-neo4j": "^1.0.0"
   }
 }
