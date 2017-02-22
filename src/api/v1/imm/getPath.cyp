@@ -1,0 +1,1 @@
+MATCH path = (n)-[r]-(q) return path
