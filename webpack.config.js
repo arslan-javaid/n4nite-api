@@ -41,7 +41,6 @@ const config = {
         ]
     },
     resolve: {
-        modulesDirectories: ['node_modules'], //MOS:20170227: Added after looking at an example here https://www.npmjs.com/package/webpack-minify-server-side
         extensions: ['.js']
     },
     plugins: plugins
