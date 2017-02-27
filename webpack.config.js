@@ -43,6 +43,9 @@ const config = {
     resolve: {
         extensions: ['.js']
     },
+    resolveLoader: {
+        root: path.join(__dirname, 'node_modules')
+    },
     plugins: plugins
 };
 
