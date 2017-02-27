@@ -35,4 +35,3 @@ app.defineAPI({
     route: '/api/v1/imm/path/',
     cypherQueryFile: './src/api/v1/imm/getPath.cyp'
 });
-
