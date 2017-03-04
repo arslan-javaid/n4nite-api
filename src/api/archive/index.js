@@ -16,9 +16,8 @@ import {logValues} from 'koa-neo4j/debug';
         method: 'POST',
         route: '/api/v1/imm/metric',
         cypherQueryFile: './src/api/v1/imm/metric/cypher/createMetric.cyp',
-        check: function (params, ctx) {
+        check: function (params) {
             // Always passes
-            params.username = ctx.username;
             return true;
         },
         preProcess: function (params) {

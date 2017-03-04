@@ -1,0 +1,18 @@
+#   Task                                            Priority    Status      Comment   
+---------------------------------------------------------------------------------------
+1   Multi Tenancy                                   Low         Defer       Prob coming to Neo4j in 2017
+2   Error Messaging in API                          Medium
+3   Chatty API (Too Many Calls)                     Medium
+4   Swagger/Documentation                           High
+5   Clean Up                                        High
+        - Reorganising foldersa and structure
+        - Adding < allowed roles > everywhere 
+6   Validation                                      Medium
+7   UUID                                            Medium
+8   Pagination                                      Low
+
+
+Rest API Notes:
+    - Use plural nouns (e.g. metrics instead of metric)
+    - Filtering and sorting
+    - Pagination use offset and limit --> GET /metrics?offset=10&limit=5

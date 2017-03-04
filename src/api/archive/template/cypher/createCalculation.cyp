@@ -8,9 +8,9 @@
 //** 
 //********************************************************************************************************
 
-    CREATE 
-        (e:entity:metric $props), 
-        (s:state:metricState $props), 
-        (e)-[r:HAS_STATE {from:timestamp(), to:9223372036854775807, current:true, modifiedBy:"mos"}]->(s)
-        SET s.dateCreated = timestamp(), e.dateCreated = timestamp()
-    RETURN e, s, r
+CREATE 
+    (e:entity:metric $props), 
+    (s:state:metricState $props), 
+    (e)-[r:HAS_STATE {from:timestamp(), to:9223372036854775807, current:true, modifiedBy:"mos"}]->(s)
+    SET s.dateCreated = timestamp(), e.dateCreated = timestamp()
+RETURN e, s, r

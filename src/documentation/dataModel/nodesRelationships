@@ -1,0 +1,211 @@
+****************************************************************************************************************************
+****                                                                                                                    ****
+***                                                                                                                      ***
+**                                                  Nodes                                                                 **
+***                                                                                                                      ***
+****                                                                                                                    ****
+****************************************************************************************************************************
+
+    *****************************
+    ***                      ****
+    **          metric         **
+    ***                      ****
+    *****************************
+    
+        *****************************
+        **        properties       **
+        *****************************
+    
+            Property Name                   Business Type   Storage Type    Default
+            ----------------------------------------------------------------------
+            name	                        string          string
+            description	                    string          string
+            businessContext	                string          string
+            notes	                        string          string
+            kpi	                            boolean         boolean
+            unitType	                    string          string
+            funtionalArea	                string          string
+            performanceFocus	            string          string
+            dateCreated	                    Date            long (epoch)    
+        
+        *****************************
+        **      possible edges     **
+        *****************************
+        
+            Source              Type                            Target              Directed
+            --------------------------------------------------------------------------------
+            metric              CALCULATED_FROM                 calculation         Yes
+    
+ 
+    *****************************
+    ***                      ****
+    **       calculation       **
+    ***                      ****
+    *****************************
+    
+        *****************************
+        **        properties       **
+        *****************************
+    
+            Property Name                   Business Type   Storage Type    Autoset
+            ----------------------------------------------------------------------
+            name	                        string          string
+            calculationFormula              string          string
+            dateCreated	                    Date            long (epoch)    yes
+        
+        *****************************
+        **      possible edges     **
+        *****************************
+        
+            Source              Type                            Target              Directed
+            --------------------------------------------------------------------------------
+            calculation         USES_CALC_COMPONENT             term                Yes
+            calculation         USES_CALC_COMPONENT             businessObject      Yes
+            metric              CALCULATED_FROM                 calculation         yes
+
+
+    *****************************
+    ***                      ****
+    **     businessObject      **
+    ***                      ****
+    *****************************
+    
+        *****************************
+        **        properties       **
+        *****************************
+    
+            Property Name                   Business Type   Storage Type    Autoset
+            ----------------------------------------------------------------------
+            name	                        string          string
+            description                     string          string
+            dateCreated	                    Date            long (epoch)    yes
+        
+        *****************************
+        **      possible edges     **
+        *****************************
+        
+            Source              Type                            Target              Directed
+            --------------------------------------------------------------------------------
+            businessObject      IS_UNIQUELY_IDENTIFIED_BY       term                Yes
+            calculation         USES_CALC_COMPONENT             businessObject      Yes
+            
+
+    *****************************
+    ***                      ****
+    **          term           **
+    ***                      ****
+    *****************************
+    
+        *****************************
+        **        properties       **
+        *****************************
+    
+            Property Name                   Business Type   Storage Type    Autoset
+            ----------------------------------------------------------------------
+            name	                        string          string
+            description                     string          string
+            dateCreated	                    Date            long (epoch)    yes
+        
+        *****************************
+        **      possible edges     **
+        *****************************
+        
+            Source              Type                            Target              Directed
+            --------------------------------------------------------------------------------
+            term                MAPS_TO_DATA_ATTRIBUTE          dataAttribute       Yes
+            calculation         USES_CALC_COMPONENT             term                Yes
+            
+            
+    *****************************
+    ***                      ****
+    **      dataAttribute      **
+    ***                      ****
+    *****************************
+    
+        *****************************
+        **        properties       **
+        *****************************
+    
+            Property Name                   Business Type   Storage Type    Autoset
+            ----------------------------------------------------------------------
+            name	                        string          string
+            description                     string          string
+            dateCreated	                    Date            long (epoch)    yes
+        
+        *****************************
+        **      possible edges     **
+        *****************************
+        
+            Source              Type                            Target              Directed
+            --------------------------------------------------------------------------------
+            term                MAPS_TO_DATA_ATTRIBUTE          dataAttribute       Yes
+            
+           
+    *****************************
+    ***                      ****
+    **           user          **
+    ***                      ****
+    *****************************
+    
+        *****************************
+        **        properties       **
+        *****************************
+    
+            Property Name                   Business Type   Storage Type    Autoset
+            ----------------------------------------------------------------------
+            name	                        string          string
+            description                     string          string
+            dateCreated	                    Date            long (epoch)    yes
+        
+        *****************************
+        **      possible edges     **
+        *****************************
+        
+            Source              Type                            Target              Directed
+            --------------------------------------------------------------------------------
+            term                MAPS_TO_DATA_ATTRIBUTE          dataAttribute       Yes
+            
+            
+                
+****************************************************************************************************************************
+****                                                                                                                    ****
+***                                                                                                                      ***
+**                                                Relationships                                                           **
+***                                                                                                                      ***
+****                                                                                                                    ****
+****************************************************************************************************************************
+
+        *****************************
+        **    common properties    **
+        *****************************
+        
+            Property Name       Business Type   Storage Type
+            ----------------------------------------------------------------------
+            from	            date            long (epoch)
+            to	                date            long (epoch)
+            current             boolean         byte
+            modifiedBy          string          string
+        
+        *****************************
+        **          types          **
+        *****************************
+        
+            USES_CALC_COMPONENT
+            CALCULATED_FROM   
+            IS_UNIQUELY_IDENTIFIED_BY
+            MAPS_TO_DATA_ATTRIBUTE
+        
+        
+            
+    
+****************************************************************************************************************************
+****                                                                                                                    ****
+***                                                                                                                      ***
+**                                                    Notes                                                               **
+***                                                                                                                      ***
+****                                                                                                                    ****
+****************************************************************************************************************************
+    
+    EOT Epoch: 9223372036854775807
+    
+    

@@ -1,0 +1,77 @@
+****************************************************************************************************************************
+****                                                                                                                    ****
+***                                                                                                                      ***
+**                                                  Metric                                                                **
+***                                                                                                                      ***
+****                                                                                                                    ****
+****************************************************************************************************************************
+
+    *****************************
+    ***                      ****
+    **           post          **
+    ***                      ****
+    *****************************
+    
+        *****************************
+        **     Create Metric       **
+        *****************************
+            endpooint: https://n4nite-api-n4nite.c9users.io/api/v1/imm/metric/
+            uriParameter: no
+            body:
+                {"props":
+                	{
+                	    "name" : "Versioned Metric A",
+                	    "description":"This is just a test description.",
+                	    "businessContext":"This describes the business context...",
+                	    "notes":"Some random notes",
+                	    "kpi":"true",
+                	    "unitType":"Ratio",
+                	    "functionalArea":"Claims",
+                	    "performanceFocus":"",
+                	    "dateAdded":"1488370955"
+                	}
+                }
+
+    *****************************
+    ***                      ****
+    **           put           **
+    ***                      ****
+    *****************************
+    
+        *****************************
+        **       Update Metric     **
+        *****************************
+            endpooint: https://n4nite-api-n4nite.c9users.io/api/v1/imm/metric/:id
+            uriParameter: yes (the entity id of the metric to be updated)
+            body:
+               {"props":
+                	{
+                	    "description":"Updating the description to test versioning."
+                	 }
+                }  
+
+****************************************************************************************************************************
+****                                                                                                                    ****
+***                                                                                                                      ***
+**                                                   Edges                                                                **
+***                                                                                                                      ***
+****                                                                                                                    ****
+****************************************************************************************************************************
+
+    *****************************
+    ***                      ****
+    **          post           **
+    ***                      ****
+    *****************************
+    
+        Notes: To create a new edge you must pass in the following information:
+                    a) The id of the source node
+                    b) The id of the target node
+                    c) The type of the edge
+                The following properties are automatically set when the edge is being created.
+                        - from:     current timestamp
+                        - to:       EOT timestamp
+                        - current:  true
+                        - modifiedBy: Name of the user that is creating the edge
+        
+                        

@@ -10,21 +10,12 @@ import {logValues} from 'koa-neo4j/debug';
 ****************************************************************/
 
     /* ***********************************
-    ***        Create New Metric       ***
+    ***         Create an Edge         ***
     **************************************/
     app.defineAPI({
         method: 'POST',
-        route: '/api/v1/imm/metric',
-        cypherQueryFile: './src/api/v1/imm/metric/cypher/createMetric.cyp',
-        check: function (params, ctx) {
-            // Always passes
-            params.username = ctx.username;
-            return true;
-        },
-        preProcess: function (params) {
-            // Returns `params` unchanged
-            return params;
-        }
+        route: '/api/v1/imm/edge',
+        cypherQueryFile: './src/api/v1/imm/edge/cypher/createEdge.cyp'
     });
     
 /* **************************************************************
@@ -34,33 +25,15 @@ import {logValues} from 'koa-neo4j/debug';
 ****************************************************************/
 
     /* ***********************************
-    ***            Read Metric         ***
+    ***            Read Edge           ***
     **************************************/
     
         //Read (get) a metric from the database matching the id parameter which the request has passed
         app.defineAPI({
             method: 'GET',
-            route: '/api/v1/imm/metric/:id',
-            cypherQueryFile: './src/api/v1/imm/metric/cypher/readMetric.cyp'
+            route: '/api/v1/imm/edge/:id',
+            cypherQueryFile: './src/api/v1/imm/edge/cypher/readEdge.cyp'
         });
-    
-    //Get all metrics along with their id and name
-    app.defineAPI({
-        method: 'GET',
-        route: '/api/v1/imm/metric',
-        cypherQueryFile: './src/api/v1/imm/metric/cypher/getMetric.cyp'
-    });
-    
-
-    //Return all properties of a metric matching on the name
-    app.defineAPI({
-        method: 'GET',
-        route: '/api/v1/imm/metric/name/:metricName',
-        cypherQueryFile: './src/api/v1/imm/metric/cypher/getMetricByName.cyp'
-    });
-
-
-
 
 /* **************************************************************
 ****                                                         ****
@@ -69,12 +42,12 @@ import {logValues} from 'koa-neo4j/debug';
 ****************************************************************/
 
     /* ***********************************
-    ***     Update Existing Metric     ***
+    ***       Update Existing Edge     ***
     **************************************/
     app.defineAPI({
         method: 'PUT',
-        route: '/api/v1/imm/metric/:id',
-        cypherQueryFile: './src/api/v1/imm/metric/cypher/updateMetric.cyp'
+        route: '/api/v1/imm/edge/:id',
+        cypherQueryFile: './src/api/v1/imm/edge/cypher/updateEdge.cyp'
     });
 
 
@@ -85,27 +58,11 @@ import {logValues} from 'koa-neo4j/debug';
 ****************************************************************/
 
     /* ***********************************
-    ***         Archive   Metric       ***
+    ***          Archive   Edge        ***
     **************************************/
     app.defineAPI({
         method: 'DEL',
-        route: '/api/v1/imm/metric/:id',
-        cypherQueryFile: './src/api/v1/imm/metric/cypher/deleteMetric.cyp'
+        route: '/api/v1/imm/edge/:id',
+        cypherQueryFile: './src/api/v1/imm/edge/cypher/deleteEdge.cyp'
     });
     
-
-/* ********************
-****      OTHER    ****
-***********************/
-app.router.get('/api/v1/imm/metric/nocypher', (ctx, next) => {
-    ctx.body = "Using router you can do other things that don't need Cypher!";
-    console.log(ctx.params);
-    console.log(ctx.request);
-    console.log(ctx.requestContext);
-    return next();
-});
-
-app.router.post('/noncypher', (ctx, next) => {
-    ctx.body = "Using router you can do other things that don't need Cypher!";
-    return next();
-});

@@ -1,0 +1,8 @@
+//delete a relationship by id
+start r=rel(id) delete r;
+
+//Delete a node and all its attached nodes
+MATCH (a)-[r*0..1]-(b) 
+WHERE id(a) = 44
+AND size((b)--()) < 2    
+DETACH DELETE a, b;
