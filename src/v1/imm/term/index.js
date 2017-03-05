@@ -1,4 +1,4 @@
-import app from '../../../../app';
+import app from '../../../app';
 
 import {fetchOne, convertToPreProcess, errorOnEmptyResult} from 'koa-neo4j/postprocess';
 import {logValues} from 'koa-neo4j/debug';
@@ -15,7 +15,7 @@ import {logValues} from 'koa-neo4j/debug';
     app.defineAPI({
         method: 'POST',
         route: '/api/v1/imm/term',
-        cypherQueryFile: './src/api/v1/imm/term/cypher/createTerm.cyp'
+        cypherQueryFile: './src/v1/imm/term/cypher/createTerm.cyp'
     });
     
     

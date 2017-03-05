@@ -1,4 +1,4 @@
-import app from '../../../../app';
+import app from '../../../app';
 
 import {fetchOne, convertToPreProcess, errorOnEmptyResult} from 'koa-neo4j/postprocess';
 import {logValues} from 'koa-neo4j/debug';
@@ -14,8 +14,8 @@ import {logValues} from 'koa-neo4j/debug';
     **************************************/
     app.defineAPI({
         method: 'POST',
-        route: '/api/v1/imm/edge',
-        cypherQueryFile: './src/api/v1/imm/edge/cypher/createEdge.cyp'
+        route: '/v1/imm/edge',
+        cypherQueryFile: './src/v1/imm/edge/cypher/createEdge.cyp'
     });
     
 /* **************************************************************
@@ -31,8 +31,8 @@ import {logValues} from 'koa-neo4j/debug';
         //Read (get) a metric from the database matching the id parameter which the request has passed
         app.defineAPI({
             method: 'GET',
-            route: '/api/v1/imm/edge/:id',
-            cypherQueryFile: './src/api/v1/imm/edge/cypher/readEdge.cyp'
+            route: '/v1/imm/edge/:id',
+            cypherQueryFile: './src/v1/imm/edge/cypher/readEdge.cyp'
         });
 
 /* **************************************************************
@@ -46,8 +46,8 @@ import {logValues} from 'koa-neo4j/debug';
     **************************************/
     app.defineAPI({
         method: 'PUT',
-        route: '/api/v1/imm/edge/:id',
-        cypherQueryFile: './src/api/v1/imm/edge/cypher/updateEdge.cyp'
+        route: '/v1/imm/edge/:id',
+        cypherQueryFile: './src/v1/imm/edge/cypher/updateEdge.cyp'
     });
 
 
@@ -62,7 +62,7 @@ import {logValues} from 'koa-neo4j/debug';
     **************************************/
     app.defineAPI({
         method: 'DEL',
-        route: '/api/v1/imm/edge/:id',
-        cypherQueryFile: './src/api/v1/imm/edge/cypher/deleteEdge.cyp'
+        route: '/v1/imm/edge/:id',
+        cypherQueryFile: './src/v1/imm/edge/cypher/deleteEdge.cyp'
     });
     

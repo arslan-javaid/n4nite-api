@@ -1,4 +1,4 @@
-import app from '../../../../app';
+import app from '../../../app';
 
 import {fetchOne, convertToPreProcess, errorOnEmptyResult} from 'koa-neo4j/postprocess';
 import {logValues} from 'koa-neo4j/debug';
@@ -14,8 +14,8 @@ import {logValues} from 'koa-neo4j/debug';
     **************************************/
         app.defineAPI({
             method: 'GET',
-            route: '/api/v1/imm/graph/:id',
-            cypherQueryFile: './src/api/v1/imm/graph/cypher/getGraphOutwardL1.cyp',
+            route: '/v1/imm/graph/:id',
+            cypherQueryFile: './src/v1/imm/graph/cypher/getGraphOutwardL1.cyp',
             check: function(params, ctx) {
                 
                 if (!isNumeric(params.id)) {
@@ -36,8 +36,8 @@ import {logValues} from 'koa-neo4j/debug';
     **************************************/
         app.defineAPI({
             method: 'GET',
-            route: '/api/v1/imm/graph/:id/1',
-            cypherQueryFile: './src/api/v1/imm/graph/cypher/getGraphOutwardL1.cyp'
+            route: '/v1/imm/graph/:id/1',
+            cypherQueryFile: './src/v1/imm/graph/cypher/getGraphOutwardL1.cyp'
         });
 
     /* ***********************************
@@ -46,8 +46,8 @@ import {logValues} from 'koa-neo4j/debug';
         app.defineAPI({
             allowedRoles: ['admin'],
             method: 'GET',
-            route: '/api/v1/imm/graph/:id/2',
-            cypherQueryFile: './src/api/v1/imm/graph/cypher/getGraphOutwardL2.cyp'
+            route: '/v1/imm/graph/:id/2',
+            cypherQueryFile: './src/v1/imm/graph/cypher/getGraphOutwardL2.cyp'
         });
 
     /* ***********************************
@@ -55,8 +55,8 @@ import {logValues} from 'koa-neo4j/debug';
     **************************************/
         app.defineAPI({
             method: 'GET',
-            route: '/api/v1/imm/graph/:id/3',
-            cypherQueryFile: './src/api/v1/imm/graph/cypher/getGraphOutwardL3.cyp'
+            route: '/v1/imm/graph/:id/3',
+            cypherQueryFile: './src/v1/imm/graph/cypher/getGraphOutwardL3.cyp'
         });
         
     function isNumeric(n) {

@@ -21,21 +21,21 @@ import {ports} from './settings';
     /* ***********************************
     ***          Business Nodes        ***
     **************************************/
-        import './api/v1/imm/metric';
-        import './api/v1/imm/calculation';
-        import './api/v1/imm/businessObject';
-        import './api/v1/imm/term';
-        import './api/v1/imm/dataAttribute';
-        import './api/v1/imm/calculation';
+        import './v1/imm/metric';
+        import './v1/imm/calculation';
+        import './v1/imm/businessObject';
+        import './v1/imm/term';
+        import './v1/imm/dataAttribute';
+        import './v1/imm/calculation';
 
 
     /* ***********************************
     ***              Generic           ***
     **************************************/
-        import './api/v1/imm';
-        import './api/v1/imm/graph';
-        import './api/v1/imm/edge';
-        import './api/v1/imm/node';
+        import './v1/imm';
+        import './v1/imm/graph';
+        import './v1/imm/edge';
+        import './v1/imm/node';
 
     /* ***********************************
     ***             Test/WIP           ***
