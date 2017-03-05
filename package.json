@@ -43,7 +43,7 @@
     "webpack": "^2.1.0-beta.27"
   },
   "dependencies": {
-    "koa-neo4j": "^1.0.0",
+    "koa-neo4j": "^1.1.0",
     "koa-validate": "^1.0.7"
   }
 }

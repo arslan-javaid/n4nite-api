@@ -32,6 +32,7 @@ import {ports} from './settings';
     /* ***********************************
     ***              Generic           ***
     **************************************/
+        import './api/v1/imm';
         import './api/v1/imm/graph';
         import './api/v1/imm/edge';
         import './api/v1/imm/node';

@@ -15,7 +15,20 @@ import {logValues} from 'koa-neo4j/debug';
         app.defineAPI({
             method: 'GET',
             route: '/api/v1/imm/graph/:id',
-            cypherQueryFile: './src/api/v1/imm/graph/cypher/getGraphOutwardL1.cyp'
+            cypherQueryFile: './src/api/v1/imm/graph/cypher/getGraphOutwardL1.cyp',
+            check: function(params, ctx) {
+                
+                if (!isNumeric(params.id)) {
+                    ctx.status = 400;
+                    //throw new Error('The parameter id must be numeric!');
+                    //ctx.error = "{error: This is a test}";
+                    //ctx.throw(400, "{error: This is a test}");
+                    //ctx.throw(401, 'The parameter id must be numeric dummy!');
+                    //ctx.body = "{error: This is a test}";
+                    }
+                else
+                    return true;
+            },
         });
 
     /* ***********************************
@@ -45,3 +58,7 @@ import {logValues} from 'koa-neo4j/debug';
             route: '/api/v1/imm/graph/:id/3',
             cypherQueryFile: './src/api/v1/imm/graph/cypher/getGraphOutwardL3.cyp'
         });
+        
+    function isNumeric(n) {
+        return !isNaN(parseFloat(n)) && isFinite(n);
+    }
