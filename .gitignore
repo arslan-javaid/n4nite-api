@@ -146,3 +146,5 @@ $RECYCLE.BIN/
 
 ### VisualStudioCode ###
 .vscode/
+settings.js
+src/settings.js
