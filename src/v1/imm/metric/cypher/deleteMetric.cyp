@@ -14,3 +14,11 @@
     SET r.to = timestamp(), r.current=false, e.archiveDate=timestamp()
     SET e:archivedEntity
     REMOVE e:entity
+      RETURN
+        {
+          id: id(e),
+          label: labels(e),
+          type:"",
+          name: e.name,
+          archiveDate: e.archiveDate
+        }

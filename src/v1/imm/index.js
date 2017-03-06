@@ -22,3 +22,10 @@ import {logValues} from 'koa-neo4j/debug';
             route: '/v1/imm',
             cypherQueryFile: './src/v1/imm/cypher/readNodes.cyp'
         });
+        
+        //Read (get) all nodes from the database and return full details
+        app.defineAPI({
+            method: 'GET',
+            route: '/v1/imm/summary',
+            cypherQueryFile: './src/v1/imm/cypher/readNodesSummary.cyp'
+        });

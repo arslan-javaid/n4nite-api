@@ -6,3 +6,6 @@ MATCH (a)-[r*0..1]-(b)
 WHERE id(a) = 44
 AND size((b)--()) < 2    
 DETACH DELETE a, b;
+
+//Pagination
+  WITH collect(distinct e)[0..20] as nodes

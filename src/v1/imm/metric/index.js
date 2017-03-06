@@ -14,7 +14,7 @@ import {logValues} from 'koa-neo4j/debug';
     **************************************/
     app.defineAPI({
         method: 'POST',
-        route: '/v1/imm/metric',
+        route: '/v1/imm/metrics',
         cypherQueryFile: './src/v1/imm/metric/cypher/createMetric.cyp',
         check: function (params, ctx) {
             // Always passes
@@ -37,30 +37,27 @@ import {logValues} from 'koa-neo4j/debug';
     ***            Read Metric         ***
     **************************************/
     
-        //Read (get) a metric from the database matching the id parameter which the request has passed
+        //Returns all metrics from the database with their full details.
         app.defineAPI({
             method: 'GET',
-            route: '/v1/imm/metric/:id',
+            route: '/v1/imm/metrics',
             cypherQueryFile: './src/v1/imm/metric/cypher/readMetric.cyp'
         });
+        
+        //Returns all metrics from the database with their summary details.
+        app.defineAPI({
+            method: 'GET',
+            route: '/v1/imm/metrics/summary',
+            cypherQueryFile: './src/v1/imm/metric/cypher/readMetricSummary.cyp'
+        });
+        
+        //Finds a metric using the id passed in by the user.
+        app.defineAPI({
+            method: 'GET',
+            route: '/v1/imm/metrics/:id',
+            cypherQueryFile: './src/v1/imm/metric/cypher/readMetricById.cyp'
+        });
     
-    //Get all metrics along with their id and name
-    app.defineAPI({
-        method: 'GET',
-        route: '/v1/imm/metric',
-        cypherQueryFile: './src/v1/imm/metric/cypher/getMetric.cyp'
-    });
-    
-
-    //Return all properties of a metric matching on the name
-    app.defineAPI({
-        method: 'GET',
-        route: '/v1/imm/metric/name/:metricName',
-        cypherQueryFile: './src/v1/imm/metric/cypher/getMetricByName.cyp'
-    });
-
-
-
 
 /* **************************************************************
 ****                                                         ****
@@ -73,7 +70,7 @@ import {logValues} from 'koa-neo4j/debug';
     **************************************/
     app.defineAPI({
         method: 'PUT',
-        route: '/v1/imm/metric/:id',
+        route: '/v1/imm/metrics/:id',
         cypherQueryFile: './src/v1/imm/metric/cypher/updateMetric.cyp'
     });
 
@@ -89,7 +86,7 @@ import {logValues} from 'koa-neo4j/debug';
     **************************************/
     app.defineAPI({
         method: 'DEL',
-        route: '/v1/imm/metric/:id',
+        route: '/v1/imm/metrics/:id',
         cypherQueryFile: './src/v1/imm/metric/cypher/deleteMetric.cyp'
     });
     
@@ -97,7 +94,7 @@ import {logValues} from 'koa-neo4j/debug';
 /* ********************
 ****      OTHER    ****
 ***********************/
-app.router.get('/v1/imm/metric/nocypher', (ctx, next) => {
+app.router.get('/v1/imm/metrics/nocypher', (ctx, next) => {
     ctx.body = "Using router you can do other things that don't need Cypher!";
     console.log(ctx.params);
     console.log(ctx.request);

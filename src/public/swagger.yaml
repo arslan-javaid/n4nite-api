@@ -1,0 +1,284 @@
+---
+swagger: "2.0"
+info:
+  description: "This is the API for the Infornite Metadata Management Tool (IMM)."
+  version: "1.0.0"
+  title: "Infornite Metadata Management"
+  termsOfService: "http://infornite.com/terms/"
+  contact:
+    name: "michael@infornite.com"
+host: "virtserver.swaggerhub.com"
+basePath: "/infornite/n4nite-api/1.0.0"
+schemes:
+- "https"
+- "http"
+paths:
+  /imm/graph/{id}:
+    get:
+      summary: "Get connected nodes and relationships for a node."
+      description: "This endpoint accepts the id of a node and then returns all of\
+        \ the relationships and nodes connected\nto that node\n"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "The id of the node for which you want to return its relationships\
+          \ and connected nodes."
+        required: true
+        type: "number"
+        format: "long"
+      responses:
+        200:
+          description: "An array with properties of the metric that matches the passed\
+            \ id."
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/graph"
+        default:
+          description: "Unexpected error"
+          schema:
+            $ref: "#/definitions/error"
+definitions:
+  graph:
+    type: "object"
+    properties:
+      type:
+        type: "string"
+        description: "This type indicates whether this graph includes nodes and edges\
+          \ (path), just nodes (nodes) or just edges (edge). For cinsistency the format\
+          \ of the JSON remains consistent where it is used and this field indicates\
+          \ whether or not the response contains nodes, edges or both."
+      directed:
+        type: "string"
+        description: "This indicates if this is a directed or undirected graph."
+      label:
+        type: "string"
+        description: "This field serves no purpose at the moment but is included to\
+          \ stay consistent with GraphJSON specification."
+      metadata:
+        $ref: "#/definitions/graph_metadata"
+      nodes:
+        type: "array"
+        items:
+          $ref: "#/definitions/graph_nodes"
+      edges:
+        type: "array"
+        items:
+          $ref: "#/definitions/edge"
+  edge:
+    type: "object"
+    properties:
+      source:
+        type: "number"
+        description: "The id of the source node for this edge."
+      relation:
+        type: "string"
+        description: "A description of the relationship."
+      target:
+        type: "number"
+        description: "The id of the target node for this edge."
+      id:
+        type: "number"
+        description: "The id assigned to this relationship in the database."
+      directed:
+        type: "string"
+        description: "Indicates if this is a directed or undirected relationship."
+  node:
+    type: "object"
+    required:
+    - "id"
+    - "label"
+    - "type"
+    discriminator: "type"
+    properties:
+      id:
+        type: "number"
+        description: "The unique id of this node."
+      type:
+        type: "string"
+        description: "This field serves no purpose at the moment but is included to\
+          \ stay consistent with GraphJSON specification."
+      label:
+        type: "array"
+        description: "The labels that are assigned to the node."
+        items:
+          type: "string"
+  metric:
+    allOf:
+    - $ref: "#/definitions/node"
+    - type: "object"
+      properties:
+        metadata:
+          $ref: "#/definitions/metric_metadata"
+  calculation2:
+    allOf:
+    - $ref: "#/definitions/calculation"
+    - $ref: "#/definitions/metric"
+  calculation:
+    allOf:
+    - $ref: "#/definitions/node"
+    - type: "object"
+      properties:
+        metadata:
+          $ref: "#/definitions/calculation_metadata"
+  businessObject:
+    allOf:
+    - $ref: "#/definitions/node"
+    - type: "object"
+      properties:
+        metadata:
+          $ref: "#/definitions/businessObject_metadata"
+  term:
+    allOf:
+    - $ref: "#/definitions/node"
+    - type: "object"
+      properties:
+        metadata:
+          $ref: "#/definitions/term_metadata"
+  dataAttribute:
+    allOf:
+    - $ref: "#/definitions/node"
+    - type: "object"
+      properties:
+        metadata:
+          $ref: "#/definitions/dataAttribute_metadata"
+  error:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      message:
+        type: "string"
+      fields:
+        type: "string"
+  label:
+    type: "string"
+    enum:
+    - "metric"
+    - "calculation"
+    - "businessObject"
+    - "term"
+    - "dataAttribute"
+  graph_metadata:
+    properties:
+      countNodes:
+        type: "number"
+        description: "The number of nodes that are present in the graph."
+      countEdges:
+        type: "number"
+        description: "The number of edges (e.g. relationships) that are present in\
+          \ the graph."
+  graph_metric:
+    properties:
+      name:
+        type: "string"
+        description: "The name of this metric."
+      description:
+        type: "string"
+        description: "A description of the metric."
+      businessContext:
+        type: "string"
+        description: "Describes the business meaning of the metric and how it can\
+          \ be used."
+      notes:
+        type: "string"
+        description: "captures any notes a user has added about this metric."
+      kpi:
+        type: "string"
+        description: "Indicates if the metric is classified as a KPI or not."
+      unitType:
+        type: "string"
+        description: "Indicates the unit type such as ratio, count etc."
+      functionalArea:
+        type: "string"
+        description: "Indicates the functional area within the organisation that the\
+          \ metric belongs to."
+      performanceFocus:
+        type: "string"
+        description: "Indicates the are of the business that this metric measures."
+      dateCreated:
+        type: "number"
+        description: "Indicates the date on which this metric was first created"
+  graph_nodes:
+    properties:
+      metric:
+        $ref: "#/definitions/graph_metric"
+      term:
+        type: "object"
+        properties: {}
+  metric_metadata:
+    properties:
+      name:
+        type: "string"
+        description: "The name of this metric."
+      description:
+        type: "string"
+        description: "A description of the metric."
+      businessContext:
+        type: "string"
+        description: "Describes the business meaning of the metric and how it can\
+          \ be used."
+      notes:
+        type: "string"
+        description: "captures any notes a user has added about this metric."
+      kpi:
+        type: "string"
+        description: "Indicates if the metric is classified as a KPI or not."
+      unitType:
+        type: "string"
+        description: "Indicates the unit type such as ratio, count etc."
+      functionalArea:
+        type: "string"
+        description: "Indicates the functional area within the organisation that the\
+          \ metric belongs to."
+      performanceFocus:
+        type: "string"
+        description: "Indicates the are of the business that this metric measures."
+      dateCreated:
+        type: "number"
+        description: "Indicates the date on which this metric was first created."
+  calculation_metadata:
+    properties:
+      name:
+        type: "string"
+        description: "The name of this calculation."
+      calculationFormula:
+        type: "string"
+        description: "Contains the mathematical forumla used to execute this calculation."
+      dateCreated:
+        type: "number"
+        description: "Indicates the date on which this metric was first created."
+  businessObject_metadata:
+    properties:
+      name:
+        type: "string"
+        description: "The name of this busines object."
+      description:
+        type: "string"
+        description: "A description of the business object."
+      dateCreated:
+        type: "number"
+        description: "Indicates the date on which this business object was first created."
+  term_metadata:
+    properties:
+      name:
+        type: "string"
+        description: "The name of this term."
+      description:
+        type: "string"
+        description: "A description of the term."
+      dateCreated:
+        type: "number"
+        description: "Indicates the date on which this term was first created."
+  dataAttribute_metadata:
+    properties:
+      name:
+        type: "string"
+        description: "The name of this data attribute."
+      description:
+        type: "string"
+        description: "A description of the data attribute."
+      dateCreated:
+        type: "number"
+        description: "Indicates the date on which this data attribute was first created."
