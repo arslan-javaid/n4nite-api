@@ -59,6 +59,15 @@ import {logValues} from 'koa-neo4j/debug';
             cypherQueryFile: './src/v1/imm/graph/cypher/getGraphOutwardL3.cyp'
         });
         
+    /* ***********************************
+    ***    Full Graph - Testing Only   ***
+    **************************************/
+        app.defineAPI({
+            method: 'GET',
+            route: '/v1/imm/graph',
+            cypherQueryFile: './src/v1/imm/graph/cypher/getGraphFull.cyp'
+        });
+        
     function isNumeric(n) {
         return !isNaN(parseFloat(n)) && isFinite(n);
     }
