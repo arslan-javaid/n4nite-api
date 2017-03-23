@@ -44,7 +44,7 @@ import {logValues} from 'koa-neo4j/debug';
     ***             Outward L2         ***
     **************************************/
         app.defineAPI({
-            //allowedRoles: ['admin'],
+            //npallowedRoles: ['admin'],
             method: 'GET',
             route: '/v1/imm/graph/:id/2',
             cypherQueryFile: './src/v1/imm/graph/cypher/getGraphOutwardL2.cyp'

@@ -146,5 +146,10 @@ $RECYCLE.BIN/
 
 ### VisualStudioCode ###
 .vscode/
-settings.js
-src/settings.js
+
+### Settings ###
+#settings.js
+#src/settings.js
+
+# Swagger Specification ##
+documentation/swagger/swagger.yaml
