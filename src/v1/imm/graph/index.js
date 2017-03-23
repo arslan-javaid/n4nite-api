@@ -65,9 +65,9 @@ import {logValues} from 'koa-neo4j/debug';
         app.defineAPI({
             method: 'GET',
             route: '/v1/imm/graph',
-            cypherQueryFile: './src/v1/imm/graph/cypher/getGraphFull.cyp'
+            cypherQueryFile: './src/v1/imm/graph/cypher/getGraphFully.cyp'
         });
         
     function isNumeric(n) {
-        return !isNaN(parseFloat(n)) && isFinite(n);
+        return !isNaN(parseFloat(n)) && isFinite(n);ph
     }
