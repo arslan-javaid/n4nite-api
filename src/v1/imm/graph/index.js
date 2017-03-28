@@ -68,6 +68,103 @@ import {logValues} from 'koa-neo4j/debug';
             cypherQueryFile: './src/v1/imm/graph/cypher/getGraphFully.cyp'
         });
         
+/* **************************************************************
+****                                                         ****
+***          Get Graph from Start Node for X Levels           ***
+****                                                         ****
+****************************************************************/
+    
+    /* ***********************************
+    ***    Full Tree - Testing Only   ***
+    **************************************/
+        app.defineAPI({
+            method: 'GET',
+            route: '/v1/imm/tree',
+            cypherQueryFile: './src/v1/imm/graph/cypher/getTree.cyp'
+        });
+    
+    /* ***********************************
+    ***         Tree L1      ***
+    **************************************/
+        app.defineAPI({
+            method: 'GET',
+            route: '/v1/imm/tree/:id/1',
+            cypherQueryFile: './src/v1/imm/graph/cypher/getTreeL1.cyp'
+        });
+        
+    /* ***********************************
+    ***         Tree L2      ***
+    **************************************/
+        app.defineAPI({
+            method: 'GET',
+            route: '/v1/imm/tree/:id/2',
+            cypherQueryFile: './src/v1/imm/graph/cypher/getTreeL2.cyp'
+        });
+        
+    /* ***********************************
+    ***         Tree L3      ***
+    **************************************/
+        app.defineAPI({
+            method: 'GET',
+            route: '/v1/imm/tree/:id/3',
+            cypherQueryFile: './src/v1/imm/graph/cypher/getTreeL3.cyp'
+        });
+        
+        
+    /* ***********************************
+    ***         Tree - Outward L1      ***
+    **************************************/
+        app.defineAPI({
+            method: 'GET',
+            route: '/v1/imm/tree/outward/:id/1',
+            cypherQueryFile: './src/v1/imm/graph/cypher/getTreeOutwardL1.cyp'
+        });
+        
+    /* ***********************************
+    ***         Tree - Outward L2      ***
+    **************************************/
+        app.defineAPI({
+            method: 'GET',
+            route: '/v1/imm/tree/outward/:id/2',
+            cypherQueryFile: './src/v1/imm/graph/cypher/getTreeOutwardL2.cyp'
+        });
+        
+    /* ***********************************
+    ***         Tree - Outward L3      ***
+    **************************************/
+        app.defineAPI({
+            method: 'GET',
+            route: '/v1/imm/tree/outward/:id/3',
+            cypherQueryFile: './src/v1/imm/graph/cypher/getTreeOutwardL3.cyp'
+        });
+        
+    /* ***********************************
+    ***         Tree - Inward L1      ***
+    **************************************/
+        app.defineAPI({
+            method: 'GET',
+            route: '/v1/imm/tree/inward/:id/1',
+            cypherQueryFile: './src/v1/imm/graph/cypher/getTreeInwardL1.cyp'
+        });
+        
+    /* ***********************************
+    ***         Tree - Inward L2      ***
+    **************************************/
+        app.defineAPI({
+            method: 'GET',
+            route: '/v1/imm/tree/inward/:id/2',
+            cypherQueryFile: './src/v1/imm/graph/cypher/getTreeInwardL2.cyp'
+        });
+        
+    /* ***********************************
+    ***         Tree - Inward L3      ***
+    **************************************/
+        app.defineAPI({
+            method: 'GET',
+            route: '/v1/imm/tree/inward/:id/3',
+            cypherQueryFile: './src/v1/imm/graph/cypher/getTreeInwardL3.cyp'
+        });
+
     function isNumeric(n) {
         return !isNaN(parseFloat(n)) && isFinite(n);ph
     }
