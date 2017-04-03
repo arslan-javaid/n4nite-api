@@ -14,7 +14,7 @@ import {logValues} from 'koa-neo4j/debug';
     **************************************/
     app.defineAPI({
         method: 'POST',
-        route: '/api/v1/imm/term',
+        route: '/v1/imm/term',
         cypherQueryFile: './src/v1/imm/term/cypher/createTerm.cyp'
     });
     

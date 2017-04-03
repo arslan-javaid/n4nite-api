@@ -14,7 +14,7 @@ import {logValues} from 'koa-neo4j/debug';
     **************************************/
     app.defineAPI({
         method: 'POST',
-        route: '/v1/imm/metrics',
+        route: '/v1/imm/metric',
         cypherQueryFile: './src/v1/imm/metric/cypher/createMetric.cyp',
         check: function (params, ctx) {
             // Always passes
