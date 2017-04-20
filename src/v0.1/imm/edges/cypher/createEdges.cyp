@@ -23,4 +23,4 @@
   FOREACH (x IN USES_CALC_COMPONENT | CREATE (s)-[r:USES_CALC_COMPONENT {from:timestamp(), to:9223372036854775807, current:true, modifiedBy:"mos"}]->(t))
   FOREACH (x IN IS_UNIQUELY_IDENTIFIED_BY | CREATE (s)-[r:IS_UNIQUELY_IDENTIFIED_BY {from:timestamp(), to:9223372036854775807, current:true, modifiedBy:"mos"}]->(t))
   FOREACH (x IN MAPS_TO_DATA_ATTRIBUTE | CREATE (s)-[r:MAPS_TO_DATA_ATTRIBUTE {from:timestamp(), to:9223372036854775807, current:true, modifiedBy:"mos"}]->(t))
-  return ID(r)
+  return *

@@ -10,11 +10,42 @@
 import app from './app';
 import {ports} from './settings';
 
-// import your logic files/modules below to be included in the bundle
+/* **************************************************************
+****                                                         ****
+***                  Import Routing Directories V0.1            ***
+****                                                         ****
+****************************************************************/
+
+    /* ***********************************
+    ***               IMM             ***
+    **************************************/
+        import './v0.1/imm';
+        
+        /* ***********************************
+        ***               Nodes             ***
+        **************************************/
+            import './v0.1/imm/nodes';
+            
+            /* ***********************************
+            ***          Business Nodes        ***
+            **************************************/
+                import './v0.1/imm/metrics';
+                import './v0.1/imm/terms';
+                import './v0.1/imm/calculations';
+                import './v0.1/imm/data-attributes';
+                import './v0.1/imm/business-objects';
+    
+        /* ***********************************
+        ***               Edges             ***
+        **************************************/
+            import './v0.1/imm/edges';
+    
+
+        
 
 /* **************************************************************
 ****                                                         ****
-***                  Import Routing Directories               ***
+***                  Import Routing Directories V1            ***
 ****                                                         ****
 ****************************************************************/
 
@@ -42,6 +73,8 @@ import {ports} from './settings';
     **************************************/
         import './samples/noncypher';
         import './samples/article';
+
+
 
 
 const appListening = new Promise(resolve => app.listen(ports.app, resolve))
