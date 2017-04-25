@@ -9,8 +9,7 @@
 //** 
 //********************************************************************************************************
 
-    OPTIONAL MATCH path = (x:entity)-[*..3 {current:true}]->(:entity)
-    
+    OPTIONAL MATCH path = (x:entity)-[*..3 {current:true}]-(:entity)
     UNWIND nodes(path) as node
     UNWIND rels(path) as rel
     
