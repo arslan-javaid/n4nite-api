@@ -41,3 +41,18 @@ import {logValues} from 'koa-neo4j/debug';
         route: '/v0.1/imm/edges',
         cypherQueryFile: './src/v0.1/imm/edges/cypher/createEdges.cyp'
     });
+    
+/* **************************************************************
+****                                                         ****
+***                      PUT (Update )                        ***
+****                                                         ****
+****************************************************************/
+
+    /* **************************************
+    *** Update Relationship Type ***
+    *****************************************/
+    app.defineAPI({
+        method: 'PUT',
+        route: '/v0.1/imm/edges',
+        cypherQueryFile: './src/v0.1/imm/edges/cypher/updateEdgeType.cyp'
+    });
