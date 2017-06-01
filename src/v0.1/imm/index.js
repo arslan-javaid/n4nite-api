@@ -19,3 +19,10 @@ import {logValues} from 'koa-neo4j/debug';
             route: '/v0.1/imm',
             cypherQueryFile: './src/v0.1/imm/cypher/readGraphs.cyp'
         });
+
+        // Returns all isolated nodes from the database.
+        app.defineAPI({
+            method: 'GET',
+            route: '/v0.1/imm/isolatedNodes',
+            cypherQueryFile: './src/v0.1/imm/cypher/readIsolatedNodes.cyp'
+        });
