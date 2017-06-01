@@ -10,7 +10,7 @@
 //********************************************************************************************************
 
 
-MATCH (e:entity:metric) -[r {current: true}]- (:entity)
+MATCH (e:entity:metric) -[r {current: true}]- ()
 WHERE id(e)= $id
 OPTIONAL MATCH (e)-[*0..]->(x:entity)
     SET r.to = timestamp(), r.current=false, e.archiveDate=timestamp()
