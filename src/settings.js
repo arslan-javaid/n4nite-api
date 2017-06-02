@@ -24,7 +24,7 @@ export const cors = {
 };
 
 export const ports = {
-    app: parseInt(process.env.PORT)
+    app: parseInt(process.env.PORT) || 3000
 };
 
 // configs for development mode
